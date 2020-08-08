@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>Restoranai</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
@@ -64,7 +64,8 @@
         </style>
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
+        <div class="" style="background-image: url('images/Fine-Dining.jpg');background-size: cover; opacity: 0.5;filter:blur(6px);height:100vh;"></div>
+        <div class="flex-center position-ref full-height" style="position: absolute;top: 50%;left: 50%;transform: translate(-50%, -50%);width:100%;">
             @if (Route::has('login'))
                 <div class="top-right links">
                     @auth
@@ -81,10 +82,10 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    Restoranai
                 </div>
 
-                <div class="links">
+                {{-- <div class="links">
                     <a href="https://laravel.com/docs">Docs</a>
                     <a href="https://laracasts.com">Laracasts</a>
                     <a href="https://laravel-news.com">News</a>
@@ -93,8 +94,8 @@
                     <a href="https://forge.laravel.com">Forge</a>
                     <a href="https://vapor.laravel.com">Vapor</a>
                     <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>
+                </div> --}}
             </div>
-        </div>
+        </div>        
     </body>
 </html>

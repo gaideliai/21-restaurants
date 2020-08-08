@@ -54,7 +54,8 @@
     @else
         <div class="col-md-8">
             <div class="card">
-                <div class="p-4">Nerasta rezultatų</div>
+                <div class="p-4">Oi! Nerasta rezultatų...</div>
+                @include('restaurant/filter-svg')
             </div>
         </div>
         

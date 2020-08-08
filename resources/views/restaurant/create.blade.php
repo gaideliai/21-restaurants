@@ -12,11 +12,11 @@
                     <form method="POST" action="{{route('restaurant.store')}}">
                         <div class="form-group">
                             <label>Pavadinimas</label>
-                            <input type="text" name="title" class="form-control">                            
+                            <input type="text" name="title" value="{{old('title')}}" class="form-control">                            
                             <label>Vietų skaičius</label>
-                            <input type="number" name="customers" class="form-control">
+                            <input type="number" name="customers" value="{{old('customers')}}" class="form-control">
                             <label>Darbuotojų skaičius</label>
-                            <input type="number" name="employees" class="form-control">
+                            <input type="number" name="employees" value="{{old('employees')}}" class="form-control">
                         </div>
                         <select name="menu_id">
                             @foreach ($menus as $menu)

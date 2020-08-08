@@ -5,9 +5,14 @@ namespace App\Http\Controllers;
 use App\Rastaurant;
 use App\Menu;
 use Illuminate\Http\Request;
+use Validator;
 
 class RastaurantController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -34,7 +39,7 @@ class RastaurantController extends Controller
      */
     public function create()
     {
-        $menus = Menu::orderBy('title')->get();
+        $menus = Menu::orderBy('title', 'desc')->get();
         return view('restaurant.create', compact('menus'));
     }
 
@@ -46,6 +51,25 @@ class RastaurantController extends Controller
      */
     public function store(Request $request)
     {
+        $validator = Validator::make($request->all(),
+        [
+            'title' => ['required', 'min:3', 'max:64'],
+            'customers' => ['required', 'numeric', 'min:2'],
+            'employees' => ['required']
+        ],
+        [
+            'title.min' => 'Pavadinimą turi sudaryti bent trys simboliai.',
+            'customers.min' => 'Restorane turi būti bent dvi vietos.',
+            'title.required' => 'Įveskite pavadinimą.',
+            'customers.required' => 'Įveskite vietų skaičių.',
+            'employees.required' => 'Įveskite darbuotojų skaičių.'
+        ]
+        );
+        if ($validator->fails()) {
+            $request->flash();
+            return redirect()->back()->withErrors($validator);
+        }
+
         $restaurant = new Rastaurant;
         $restaurant->title = $request->title;
         $restaurant->customers = $request->customers;
@@ -87,6 +111,25 @@ class RastaurantController extends Controller
      */
     public function update(Request $request, Rastaurant $restaurant)
     {
+        $validator = Validator::make($request->all(),
+        [
+            'title' => ['required', 'min:3', 'max:64'],
+            'customers' => ['required', 'numeric', 'min:2'],
+            'employees' => ['required']
+        ],
+        [
+            'title.min' => 'Pavadinimą turi sudaryti bent trys simboliai.',
+            'customers.min' => 'Restorane turi būti bent dvi vietos.',
+            'title.required' => 'Įveskite pavadinimą.',
+            'customers.required' => 'Įveskite vietų skaičių.',
+            'employees.required' => 'Įveskite darbuotojų skaičių.'
+        ]
+        );
+        if ($validator->fails()) {
+            $request->flash();
+            return redirect()->back()->withErrors($validator);
+        }
+
         $restaurant->title = $request->title;
         $restaurant->customers = $request->customers;
         $restaurant->employees = $request->employees;
