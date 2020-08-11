@@ -86,8 +86,8 @@ class RastaurantController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Rastaurant $restaurant)
-    {
-        //
+    {        
+        return view('restaurant.show', compact('restaurant'));
     }
 
     /**

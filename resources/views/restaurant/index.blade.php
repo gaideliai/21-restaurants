@@ -34,14 +34,15 @@
                         <span class="font-weight-bold">Dienos patiekalas:</span>
                         {{$restaurant->getMenus->title}}
                     </div>
-                    <div class="ml-4">                        
+                    <div class="ml-4">
+                        <img src="{{asset('images/'.$restaurant->getMenus->image)}}" alt="{{$restaurant->getMenus->alt}}" style="display: block; width: 250px; height: auto;">                      
                         <div>{!!$restaurant->getMenus->about!!}</div>
                         <div>Porcijos svoris: {{$restaurant->getMenus->weight}}g</div> 
                         <div>Mėsos kiekis porcijoje: {{$restaurant->getMenus->meat}}g</div>
                         <div>Kaina: {{$restaurant->getMenus->price}}&#8364;</div>
                     </div>                                           
                     <a href="{{route('restaurant.edit',[$restaurant])}}" class="btn btn-dark mt-3">Redaguoti</a><br>
-
+                    <a href="{{route('restaurant.show', [$restaurant])}}" class="btn btn-dark mt-3">Parodyti</a>
                     <form method="POST" action="{{route('restaurant.destroy', [$restaurant])}}">
                         @csrf
                         <button type="submit" class="btn btn-danger mt-3">Išrinti</button>
